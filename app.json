@@ -4,7 +4,7 @@
     "slug": "Wonder-Terminus",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/Wonder-TerminusIcon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -17,9 +17,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/Wonder-TerminusIcon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ohmgcj.WonderTerminus"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "dd8a45be-ab2e-4cb5-9de3-cdfa5bc88496"
+      }
     }
   }
 }

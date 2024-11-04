@@ -36,8 +36,8 @@ function HomeScreen() {
   const calculateResults = () => {
     if (x !== null && y !== null && z !== null) {
       const result1 = equationOne(x);
-      const result2 = equationTwo(z, y);
-      const result3 = equationThree(y, z, x);
+      const result2 = equationTwo(y, z);
+      const result3 = equationThree(x, y, z);
       return { result1, result2, result3 };
     }
     return null;
