@@ -5,6 +5,8 @@ import { ThemedText } from '@/components/ThemedText';
 import { ValueSelector } from '@/components/ValueSelector'; // Import do seu componente personalizado
 import { equationOne, equationTwo, equationThree } from '../../functions/equations';
 
+import { AdMobBanner } from '@/components/AdMobBanner';
+
 function HomeScreen() {
   const [x, setX] = useState<number | null>(null);
   const [y, setY] = useState<number | null>(null);
@@ -47,46 +49,47 @@ function HomeScreen() {
 
   return (
     <ThemedView style={styles.container}>
+      <AdMobBanner/>
       <View style={styles.row}>
         <View style={styles.column}>
-          <ThemedText style={styles.label}>X Symbol:</ThemedText>
+          <ThemedText style={styles.label}>Pressione abaixo:</ThemedText>
           <TouchableOpacity style={styles.selector} onPress={() => openSelectorModal('X')}>
             {x !== null ? (
               <Image source={imageMap[x]} style={styles.symbolImage} />
             ) : (
               <ThemedText style={styles.symbolText}>X</ThemedText>
             )}
-            <ThemedText style={styles.selectText}>Tap to select symbol</ThemedText>
+            <ThemedText style={styles.selectText}>Selecione o símbolo de X</ThemedText>
           </TouchableOpacity>
         </View>
 
         <View style={styles.column}>
-          <ThemedText style={styles.label}>Y Symbol:</ThemedText>
+          <ThemedText style={styles.label}>Pressione abaixo:</ThemedText>
           <TouchableOpacity style={styles.selector} onPress={() => openSelectorModal('Y')}>
           {y !== null ? (
               <Image source={imageMap[y]} style={styles.symbolImage} />
             ) : (
               <ThemedText style={styles.symbolText}>Y</ThemedText>
             )}
-            <ThemedText style={styles.selectText}>Tap to select symbol</ThemedText>
+            <ThemedText style={styles.selectText}>Selecione o símbolo de Y</ThemedText>
           </TouchableOpacity>
         </View>
 
         <View style={styles.column}>
-          <ThemedText style={styles.label}>Z Symbol:</ThemedText>
+          <ThemedText style={styles.label}>Pressione abaixo:</ThemedText>
           <TouchableOpacity style={styles.selector} onPress={() => openSelectorModal('Z')}>
           {z !== null ? (
               <Image source={imageMap[z]} style={styles.symbolImage} />
             ) : (
               <ThemedText style={styles.symbolText}>Z</ThemedText>
             )}
-            <ThemedText style={styles.selectText}>Tap to select symbol</ThemedText>
+            <ThemedText style={styles.selectText}>Selecione o símbolo de Z</ThemedText>
           </TouchableOpacity>
         </View>
       </View>
-
+      <View style={styles.resultContainer}>
       {results ? (
-        <View style={styles.resultContainer}>
+        <View style={styles.resultBox}>
           <ThemedText style={styles.resultText}>{results.result1}</ThemedText>
           <ThemedText style={styles.resultText}>{results.result2}</ThemedText>
           <ThemedText style={styles.resultText}>{results.result3}</ThemedText>
@@ -94,7 +97,7 @@ function HomeScreen() {
       ) : (
         <ThemedText style={styles.resultText}>Selecione todos os valores para ver os resultados.</ThemedText>
       )}
-
+      </View>
       <Modal
         visible={isModalVisible}
         transparent={true}
@@ -103,12 +106,13 @@ function HomeScreen() {
       >
         <View style={styles.modalBackground}>
           <View style={styles.modalContainer}>
-            <ThemedText style={styles.modalTitle}>Select a value for {selectedVariable}</ThemedText>
+            <ThemedText style={styles.modalTitle}>Selecione um valor {selectedVariable}</ThemedText>
             <ValueSelector onSelect={handleValueSelect} />
             <Button title="Close" onPress={() => setModalVisible(false)} />
           </View>
         </View>
       </Modal>
+      <AdMobBanner/>
     </ThemedView>
   );
 }
@@ -123,8 +127,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   row: {
+    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 20,
   },
   column: {
@@ -136,6 +142,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     marginBottom: 8,
+    textAlign: 'center'
   },
   selector: {
     width: '100%',
@@ -158,8 +165,12 @@ const styles = StyleSheet.create({
   selectText: {
     fontSize: 12,
     color: '#888',
+    textAlign: 'center'
   },
   resultContainer: {
+    flex: 1
+  },
+  resultBox: {
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 20,
@@ -172,6 +183,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     lineHeight: 36,
     color: 'white',
+    textAlign: 'center',
     flexWrap: 'wrap',
     padding: 5
   },
