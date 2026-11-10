@@ -1,50 +1,44 @@
-# Welcome to your Expo app 👋
+# Wonder Terminus
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App mobile que resolve o puzzle dos símbolos do mapa **Terminus**, no modo Zombies de *Call of Duty: Black Ops 6*. Você toca nos três símbolos que encontrou no mapa e o app devolve o código na hora, sem fazer conta de cabeça enquanto os zumbis chegam.
 
-## Get started
+<p align="center">
+  <img src="docs/demo.gif" alt="Demonstração do Wonder Terminus" width="280" />
+</p>
 
-1. Install dependencies
+## Como funciona
 
-   ```bash
-   npm install
-   ```
+1. Toque em **X**, **Y** e **Z** e escolha o símbolo que viu no jogo.
+2. Com os três escolhidos, o app mostra os três números do código.
 
-2. Start the app
+As fórmulas ficam isoladas em funções puras, em [`functions/equations.ts`](functions/equations.ts), separadas da interface:
 
-   ```bash
-    npx expo start
-   ```
+| Resultado | Fórmula |
+|---|---|
+| 1º número | `2X + 11` |
+| 2º número | `(2Z + Y) − 5` |
+| 3º número | `(Y + Z) − X` |
 
-In the output, you'll find options to open the app in a
+## Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- React Native + Expo (SDK 51)
+- Expo Router (navegação por arquivos)
+- TypeScript
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Rodando localmente
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Abra no celular com o app **Expo Go** (lendo o QR code) ou num emulador Android/iOS.
 
-## Learn more
+## Próximos passos
 
-To learn more about developing your project with Expo, look at the following resources:
+- [ ] Testes das fórmulas com Jest
+- [ ] Gerar APK para download
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Feito por [Caio Alves Godoy](https://caiogodoy.dev) · [LinkedIn](https://www.linkedin.com/in/caio-alves-636157194/)
